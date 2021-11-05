@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const items_holder = document.querySelector(".item_list");
     const btn_add = document.querySelector(".btn-add");
     const btn_clear = document.querySelector(".btn-clear");
-    const clear_items = document.querySelector(".clear");
+    const clear_items = document.querySelector(".items-clear");
     const input_holder = document.querySelector(".input-holder");
     const feedback_holder = document.querySelector(".alert-holder");
 
@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     let currentTime = new Date().getDay();
 
-    btn_clear.addEventListener("click", () => clearItems())
+    clear_items.addEventListener("click", () => clearItems())
 
     btn_clear.addEventListener("click", e => {
         e.preventDefault();
@@ -57,7 +57,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
             <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                 <div class="d-flex w-80 justify-content-between align-items-center">
                     <div class = "col">
-                        <input type="text" ${!task.edited ? 'readonly' : ''} value = "${task.complete ? `<del>${task.text}</del>` : task.text}" class="form-control item-input" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input type="text" ${!task.edited ? 'readonly' : ''} 
+                        value = "${task.text}" 
+                        class="form-control item-input" aria-label="Example text with button addon" aria-describedby="button-addon1">
                         <small>${setDateText(currentTime - task.date)}</small>
                     </div>
                     <div>
@@ -77,6 +79,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             const deleteBtn = div.querySelector('.remove');
             const completeBtn = div.querySelector('.complete');
             const editBtn = div.querySelector('.edit');
+
+            task.complete ? itemInput.classList.add("complete") : itemInput.classList.remove("complete")
 
             deleteBtn.addEventListener("click", () => deleteItem(task));
             completeBtn.addEventListener("click", () => completeItem(task));

@@ -51,3 +51,11 @@ body
 {
   display: none;
 }
+.complete
+{
+  text-decoration: line-through;
+}
+.nocomplete
+{
+  text-decoration: none;
+}
